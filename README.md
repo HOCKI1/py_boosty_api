@@ -3,8 +3,8 @@
 
 **PyBoostyAPI** is a powerful asynchronous Python library for seamless interaction with [Boosty.to](https://boosty.to) through its internal API. It supports posts, subscribers, dialogs, sales, donations, and detailed statistics.
 
-![PyPI - Python Version](https://img.shields.io/pypi/pyversions/pyboostyapi)
-![PyPI - License](https://img.shields.io/pypi/l/pyboostyapi)
+![PyPI - Python Version](https://img.shields.io/pypi/pyversions/py_boosty_api)
+![PyPI - License](https://img.shields.io/pypi/l/PyBoostyApi)
 ![GitHub stars](https://img.shields.io/github/stars/HOCKI1/py_boosty_api?style=social)
 
 ---
@@ -23,7 +23,7 @@
 ## ⚙️ Installation
 
 ```bash
-pip install py_boosty_api
+pip install PyBoostyApi
 ````
 
 Or manually:
