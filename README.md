@@ -71,6 +71,16 @@ if __name__ == "__main__":
   "_clientId": "your_uuid"
 }
 ```
+To get this data:
+- Create auth.json file in your project
+- Login to Boosty(with any available method)
+- Press F12 -> Console
+- Puth there this code:
+```
+console.log(localStorage.getItem("auth"))
+```
+- Copy the result to auth.json file
+- Profit!
 
 ---
 
