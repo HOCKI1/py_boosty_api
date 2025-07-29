@@ -7,6 +7,9 @@
 ![PyPI - License](https://img.shields.io/pypi/l/PyBoostyApi)
 ![GitHub stars](https://img.shields.io/github/stars/HOCKI1/py_boosty_api?style=social)
 
+PyPi page
+https://pypi.org/project/PyBoostyApi/
+
 ---
 
 ## ✨ Features
