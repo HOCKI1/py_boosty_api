@@ -1,0 +1,146 @@
+Metadata-Version: 2.4
+Name: PyBoostyApi
+Version: 1.0.5
+Summary: PyBoostyAPI is a powerful asynchronous Python library for seamless interaction with the Boosty.to API
+Home-page: https://github.com/HOCKI1/py_boosty_api
+Author: HOCKI1
+Author-email: hocki1.official@yandex.ru
+Project-URL: Source, https://github.com/HOCKI1/py_boosty_api
+Project-URL: Tracker, https://github.com/HOCKI1/py_boosty_api/issues
+Keywords: boosty api async aiohttp donations subscribers
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Requires-Python: >=3.7
+Description-Content-Type: text/markdown
+License-File: LICENSE
+Requires-Dist: aiohttp
+Requires-Dist: requests
+Requires-Dist: beautifulsoup4
+Dynamic: author
+Dynamic: author-email
+Dynamic: classifier
+Dynamic: description
+Dynamic: description-content-type
+Dynamic: home-page
+Dynamic: keywords
+Dynamic: license-file
+Dynamic: project-url
+Dynamic: requires-dist
+Dynamic: requires-python
+Dynamic: summary
+
+
+# 🚀 PyBoostyAPI
+
+**PyBoostyAPI** is a powerful asynchronous Python library for seamless interaction with [Boosty.to](https://boosty.to) through its internal API. It supports posts, subscribers, dialogs, sales, donations, and detailed statistics.
+
+![PyPI - Python Version](https://img.shields.io/pypi/pyversions/py_boosty_api)
+![PyPI - License](https://img.shields.io/pypi/l/PyBoostyApi)
+![GitHub stars](https://img.shields.io/github/stars/HOCKI1/py_boosty_api?style=social)
+
+PyPi page
+https://pypi.org/project/PyBoostyApi/
+
+---
+
+## ✨ Features
+
+- 🔐 Authentication with token auto-refresh
+- 📬 User dialog handling
+- 📊 Fetching statistics and sales data
+- 💬 Get free and paid subscribers
+- 📝 Create and delete posts
+- 💰 Get donation and subscription tier info
+
+---
+
+## ⚙️ Installation
+
+```bash
+pip install PyBoostyApi
+````
+
+Or manually:
+
+```bash
+git clone https://github.com/HOCKI1/py_boosty_api.git
+cd py_boosty_api
+pip install .
+```
+
+---
+
+## 🔧 Basic Usage Example
+
+```python
+import asyncio
+from boosty_api import BoostyAPI
+
+async def main():
+    api = await BoostyAPI.create("auth.json")
+    try:
+        href = await api.get_blog_href()
+        print("🔗 Blog href:", href)
+
+        stats = await api.get_blog_stats() # Get stats of your Blog
+        print("📊 Stats:", stats)
+
+    finally:
+        await api.close()
+
+if __name__ == "__main__":
+    asyncio.run(main())
+
+```
+
+---
+
+## 🗂 `auth.json` Structure
+
+```json
+{
+  "access_token": "your_token",
+  "refresh_token": "your_refresh_token",
+  "expiresAt": 1722193100,
+  "_clientId": "your_uuid"
+}
+```
+To get this data:
+- Create auth.json file in your project
+- Login to Boosty(with any available method)
+- Press F12 -> Console
+- Puth there this code:
+```
+console.log(localStorage.getItem("auth"))
+```
+- Copy the result to auth.json file
+- Profit!
+
+---
+
+## 📌 TODO
+
+* [x] Posts
+* [x] Subscribers
+* [ ] Dialogs
+* [x] Donations
+* [x] Sales
+* [x] Auto token refresh
+* [x] Media content (albums, images)
+* [ ] More common usable functions
+
+---
+
+## 📄 License
+
+This project is licensed under the **MIT License**. See `LICENSE` for details.
+
+---
+
+## 🤝 Contact
+
+Author: [HOCKI1](https://github.com/HOCKI1)
+Email: [hocki1.official@yandex.ru](mailto:hocki1.official@yandex.ru)
+Made with ❤️ for the Boosty creator community.
+

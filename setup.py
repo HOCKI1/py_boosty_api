@@ -8,7 +8,7 @@ except FileNotFoundError:
 
 setup(
     name='PyBoostyApi',
-    version='1.0.0',
+    version='1.0.5',
     author='HOCKI1',
     author_email='hocki1.official@yandex.ru',
     description='PyBoostyAPI is a powerful asynchronous Python library for seamless interaction with the Boosty.to API',

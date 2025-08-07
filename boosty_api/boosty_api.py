@@ -7,10 +7,10 @@ from pathlib import Path
 from bs4 import BeautifulSoup
 from urllib.parse import urlencode
 
-AUTH_FILE = "auth.json"
-CLIENT_ID = "4f80bc1a-27ee-4cd6-9af3-04168a021602"
+CLIENT_ID = ""
 EXPIRE_THRESHOLD_MS = 6 * 60 * 60 * 1000    # 6 часов
 TOKEN_LIFETIME_MS = 7 * 24 * 60 * 60 * 1000  # 7 дней
+AUTH_FILE = "auth.json" 
 
 class BoostyAPI:
     BASE_URL = "https://boosty.to"
@@ -24,18 +24,24 @@ class BoostyAPI:
         self._token_task = None
 
     @staticmethod
-    def load_auth(path=AUTH_FILE) -> dict:
+    def load_auth(path = AUTH_FILE) -> dict:
         with open(path, "r", encoding="utf-8") as f:
             return json.load(f)
 
     @staticmethod
-    def save_auth(data: dict, path=AUTH_FILE):
+    def save_auth(data: dict, path = AUTH_FILE):
         with open(path, "w", encoding="utf-8") as f:
             json.dump(data, f, indent=2)
 
     @classmethod
     async def create(cls, path: str) -> "BoostyAPI":
+        if not Path(path).exists():
+            raise FileNotFoundError(f"Файл авторизации не найден: {path}")
+        cls.AUTH_FILE = Path(path)
         data = cls.load_auth(path=path)
+        cls.CLIENT_ID = data.get("_clientId", "")
+        if not cls.CLIENT_ID:
+            raise ValueError("Не указан CLIENT_ID в auth.json")
         obj = cls._from_data(data)
         await obj._start_token_loop()
         return obj
@@ -89,7 +95,8 @@ class BoostyAPI:
             "refreshToken": data["refresh_token"],
             "expiresAt": str(now + TOKEN_LIFETIME_MS),
             "isEmptyUser": "0",
-            "redirectAppId": "web"
+            "redirectAppId": "web",
+            "_clientId": CLIENT_ID
         }
 
         self.auth_cookie = urllib.parse.quote(json.dumps(new_data, separators=(",", ":")))
